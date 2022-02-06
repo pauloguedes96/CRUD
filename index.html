@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+</head>
+
+<body>
+
+    <div id="modalContainer">
+        <div id="modal">
+
+            <div id="headerTitle">
+                <h2>Novo Cliente</h2>
+            </div>
+
+            <input type="text" id="inputNome" placeholder="Nome">
+            <input type="email" id="inputEmailModal" placeholder="Email">
+            <input type="text" id="inputTel" placeholder="Telefone">
+            <input type="text" id="inputCity" placeholder="Cidade">
+            <input type="password" id="inputPasswordModal" placeholder="Senha">
+
+            <button id="btnSalvaEdit">Salvar</button>
+            <button id="btnSalvar">Salvar</button>
+            <button id="btnLimpar">Limpar</button>
+
+            <button id="btnCloseModal">X</button>
+
+        </div>
+    </div>
+
+    <div id="container">
+        <header id="header">
+            <h1 id="title">Cadastro de Clientes</h1>
+        </header>
+        <main id="main">
+            <div id="containerCad">
+                <button id="btnCadastrar">Cadastrar</button>
+
+                <table id="tableClient">
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Celular</th>
+                        <th>Cidade</th>
+                        <th>Ação</th>
+                    </tr>
+                    <!--                     <tr id="" class="clientes" >
+                        <td>conteudo</td>
+                        <td>conteudo</td>
+                        <td>conteudo</td>
+                        <td>conteudo</td>
+                        <td class="tdBtn">
+                            <button id="" class="btnEditTd">Editar</button>
+                            <button id="" class="btnDelTd">Excluir</button>
+                        </td>
+                    </tr> -->
+
+                </table>
+
+            </div>
+        </main>
+        <footer id="footer">
+            <p>Dev. Guedes - <a href="">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script type="module" src="/scripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+#modalContainer{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.678);
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+#modal{
+    width: 400px;
+    height: 250px;
+    background-color: var(--branco);
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 20px 5px;
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.308);
+}
+
+/* ====================================== */
+
+#headerTitle{
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    background-color:var(--azul);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--branco);
+    font-family: var(--font);
+    cursor: default;
+}
+
+input{
+    font-family: var(--font);
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input::placeholder{
+    padding-left: 5px;
+}
+
+#inputNome{
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#inputEmailModal{
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+#inputTel{
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#inputCity{
+    grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
+#inputPasswordModal{
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#btnSalvar{
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    background-color:rgb(81, 160, 7);
+}
+#btnLimpar{
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    background-color:rgb(221, 19, 19);
+}
+
+#btnSalvaEdit{
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    background-color:var(--azul);
+    z-index: 10000;
+    display: none;
+}
+
+/* ====================================== */
+
+#btnSalvar, #btnLimpar, #btnSalvaEdit{
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--font);
+    font-weight: bold;
+    color: var(--branco);
+}
+
+#btnCloseModal{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2.5px white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgb(221, 19, 19);
+    color: var(--branco);
+    box-shadow: 0px 0px 5px 0px black;
+}
