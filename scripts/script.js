@@ -4,31 +4,12 @@ import { clientes } from '../model/cliente.js';
 //Eventos que serão executados após carregamento completo da pagina
 document.addEventListener('DOMContentLoaded', () => {
 
-    //Captura o click de enter e ativa
-    //a funcção newPost
-    function enterKey() {
-
-        document.addEventListener("keydown", (e) => {
-            // aqui eu verifico a tecla que foi pressionada se foi enter
-            // caso seja enter eu executo a função inserir
-
-            if (e.key === 'Enter' || e.which == 13 || e.keyCode == 13) {
-                newPost();
-                //console.log("Inserido com Enter");        
-            } else {
-                //console.log("Enter Falhou"); 
-            }
-        });
-    }
-
     preencheLista();
 
     document.getElementById('btnCadastrar').addEventListener('click', mostraModal);
     document.getElementById('btnCloseModal').addEventListener('click', mostraModal);
     document.getElementById('btnLimpar').addEventListener('click', limparCampos);
     document.getElementById('btnSalvar').addEventListener('click', cadastrar);
-
-
 
     //evento click com função editaCliente
     //em todos os objetos do array
@@ -37,12 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //evento click com função apagaCliente em todos
     //os objetos do array
     document.querySelectorAll('.btnDelTd').forEach(e => { e.addEventListener('click', apagaCliente) });
-
-    document.getElementById('btnSalvar').addEventListener('click', cadastrar);
-    document.getElementById('cadLink').addEventListener('click', mostraModal);
-    document.getElementById('btnCloseModal').addEventListener('click', mostraModal);
-    document.getElementById('btnLimpar').addEventListener('click', limparCampos);
-
 });
 
 let modal = document.getElementById('modalContainer');
