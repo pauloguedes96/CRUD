@@ -1,0 +1,1 @@
+CRUD criado com javascript, com fins de estudo, armazenando dados no local storage do navegador.
