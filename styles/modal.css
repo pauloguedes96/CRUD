@@ -96,19 +96,9 @@ input::placeholder{
     background-color:rgb(221, 19, 19);
 }
 
-#btnSalvaEdit{
-    grid-row-start: 4;
-    grid-row-end: 4;
-    grid-column-start: 3;
-    grid-column-end: 3;
-    background-color:var(--azul);
-    z-index: 10000;
-    display: none;
-}
-
 /* ====================================== */
 
-#btnSalvar, #btnLimpar, #btnSalvaEdit{
+#btnSalvar, #btnLimpar {
     cursor: pointer;
     border: none;
     border-radius: 5px;

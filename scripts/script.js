@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     preencheLista();
 
-    document.getElementById('btnCadastrar').addEventListener('click', mostraModal);
-    document.getElementById('btnCloseModal').addEventListener('click', mostraModal);
-    document.getElementById('btnLimpar').addEventListener('click', limparCampos);
-    document.getElementById('btnSalvar').addEventListener('click', cadastrar);
+    document.querySelector('#btnCadastrar').addEventListener('click', mostraModal);
+    document.querySelector('#btnCloseModal').addEventListener('click', mostraModal);
+    document.querySelector('#btnLimpar').addEventListener('click', limparCampos);
+    document.querySelector('#btnSalvar').addEventListener('click', cadastrar);
 
     document.querySelectorAll('.btnDelTd').forEach(e => { e.addEventListener('click', apagaCliente) });
 });
@@ -24,9 +24,8 @@ let idEditado = null;
 let listaClientes = null;
 let listaViewTemplate = null;
 
-let modal = document.getElementById('modalContainer');
+let modal = document.querySelector('#modalContainer');
 modal.style.display = 'none';
-
 
 function mostraModal() {
 
@@ -36,6 +35,54 @@ function mostraModal() {
     else {
         modal.style.display = 'none';
     }
+}
+
+function preencheLista() {
+
+    listaClientes = JSON.parse(localStorage.getItem('cliente'));
+
+    if (!listaClientes) {
+        
+        clientes.cliente = [];
+    }
+    else {
+
+        clientes.cliente = listaClientes;
+
+        listaViewTemplate = `<tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Celular</th>
+        <th>Cidade</th>
+        <th>Ação</th>
+        </tr>`;
+
+        clientes.cliente.forEach(cliente => {
+
+            listaViewTemplate +=
+                `<tr id="${cliente.id}" class="clientes" >
+                <td>${cliente.nome}</td>
+                <td>${cliente.email}</td>
+                <td>${cliente.tel}</td>
+                <td>${cliente.cidade}</td>
+                <td class="tdBtn">
+                <button id="${cliente.id}" class="btnEditTd">Editar</button>
+
+                <button id="${cliente.id}" class="btnDelTd">Excluir</button>
+                </td>
+                </tr>`;
+        });
+
+        document.querySelector('#tableClient').innerHTML = listaViewTemplate;
+        document.querySelectorAll('.btnEditTd').forEach(e => { e.addEventListener('click', editaCliente) });
+        document.querySelectorAll('.btnDelTd').forEach(e => { e.addEventListener('click', apagaCliente) });
+        limparCampos();
+    }
+}
+
+function generateID() {
+
+    return Math.random().toString(36).substring(2, 9);
 }
 
 function cadastrar() {
@@ -114,65 +161,27 @@ function cadastrar() {
     }
 }
 
-function generateID() {
+function editaCliente(e) {
 
-    return Math.random().toString(36).substring(2, 9);
-}
+    editar = true;
 
-function limparCampos() {
+    modal.style.display = 'flex';
 
-    document.querySelector('#inputNome').value = '';
-    document.querySelector('#inputEmailModal').value = '';
-    document.querySelector('#inputTel').value = '';
-    document.querySelector('#inputCity').value = '';
-    document.querySelector('#inputPasswordModal').value = '';
-}
+    console.log('Entrou no Edita Cliente')
 
-function preencheLista() {
+    idEditado = e.target.id;
 
-    listaClientes = JSON.parse(localStorage.getItem('cliente'));
+    console.log(idEditado)
 
-    if (!listaClientes) {
-        console.log('Caiu no if')
+    let clienteTempEdit = [];
 
-        clientes.cliente = [];
-    }
-    else {
+    clienteTempEdit = clientes.cliente.filter((cliente) => { return cliente.id == idEditado });
 
-        clientes.cliente = listaClientes;
-
-        listaViewTemplate = `<tr>
-        <th>Nome</th>
-        <th>E-mail</th>
-        <th>Celular</th>
-        <th>Cidade</th>
-        <th>Ação</th>
-        </tr>`;
-
-        clientes.cliente.forEach(cliente => {
-
-            listaViewTemplate +=
-                `<tr id="${cliente.id}" class="clientes" >
-                <td>${cliente.nome}</td>
-                <td>${cliente.email}</td>
-                <td>${cliente.tel}</td>
-                <td>${cliente.cidade}</td>
-                <td class="tdBtn">
-                <button id="${cliente.id}" class="btnEditTd">Editar</button>
-
-                <button id="${cliente.id}" class="btnDelTd">Excluir</button>
-                </td>
-                </tr>`;
-        });
-
-        document.getElementById('tableClient').innerHTML = listaViewTemplate;
-
-        document.querySelectorAll('.btnEditTd').forEach(e => { e.addEventListener('click', editaCliente) });
-
-        document.querySelectorAll('.btnDelTd').forEach(e => { e.addEventListener('click', apagaCliente) });
-
-        limparCampos();
-    }
+    document.querySelector('#inputNome').value = clienteTempEdit[0].nome;
+    document.querySelector('#inputEmailModal').value = clienteTempEdit[0].email;
+    document.querySelector('#inputTel').value = clienteTempEdit[0].tel;
+    document.querySelector('#inputCity').value = clienteTempEdit[0].cidade;
+    document.querySelector('#inputPasswordModal').value = clienteTempEdit[0].passWord;
 }
 
 function apagaCliente(e) {
@@ -190,25 +199,11 @@ function apagaCliente(e) {
     preencheLista();
 }
 
-function editaCliente(e) {
+function limparCampos() {
 
-    editar = true;
-
-    modal.style.display = 'flex';
-
-    console.log('Entrou no Edita Cliente')
-
-    idEditado = e.target.id;
-
-    console.log(idEditado)
-
-    let clienteTempEdit = [];
-
-    clienteTempEdit = clientes.cliente.filter((cliente) => { return cliente.id == idEditado });
-
-    document.getElementById('inputNome').value = clienteTempEdit[0].nome;
-    document.getElementById('inputEmailModal').value = clienteTempEdit[0].email;
-    document.getElementById('inputTel').value = clienteTempEdit[0].tel;
-    document.getElementById('inputCity').value = clienteTempEdit[0].cidade;
-    document.getElementById('inputPasswordModal').value = clienteTempEdit[0].passWord;
+    document.querySelector('#inputNome').value = '';
+    document.querySelector('#inputEmailModal').value = '';
+    document.querySelector('#inputTel').value = '';
+    document.querySelector('#inputCity').value = '';
+    document.querySelector('#inputPasswordModal').value = '';
 }
