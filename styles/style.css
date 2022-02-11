@@ -146,12 +146,17 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     color: var(--branco);
     font-family: var(--font);
 }
 
 #footer a{
     color: var(--branco);
+}
+
+footer img{
+    width: 24px;
 }
 
 /* =================================== */
